@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
 import CardViewer from './components/CardViewer/cardViewer';
+import axios from 'axios';
 
 class App extends Component {
     state = {
@@ -8,7 +9,15 @@ class App extends Component {
             collection: [],
             cardNumber: 0
         };
+
+    componentDidMount(){
+        this.getAllCards();
+        console.log(this.state.flashcards)
+    }
     
+    async getAllCards(){
+        let response = await axios.get('http://127.0.0.1:8000/flashcard/')
+    }
     
     goToNextCard(){
         let tempCardNumber = this.state.cardNumber;
@@ -34,7 +43,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <TitleBar />
-                <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} />
+                {/* <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} /> */}
             </div>
         );
     }
