@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
+import CardViewer from './components/CardViewer/cardViewer';
 
 class App extends Component {
     state = {
@@ -33,7 +34,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <TitleBar />
-                
+                <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} />
             </div>
         );
     }

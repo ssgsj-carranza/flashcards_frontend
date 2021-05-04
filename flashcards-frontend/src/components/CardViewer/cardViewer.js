@@ -7,7 +7,8 @@ function CardViewer(props){
                 <button onClick={() => this.goToPreviousCard()}>Previous Card</button>
             </div>
             <div className="col-md-4">
-                {/* display card */}
+                <h1>{props.flashcards}</h1>
+                <h4>{props.collection}</h4>
             </div>
             <div className="col-md-4">
                 <button onClick={() => this.goToNextCard()}>Next Card</button>
