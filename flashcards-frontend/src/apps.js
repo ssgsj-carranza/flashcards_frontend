@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
-import CardViewer from './components/CardViewer/cardViewer';
+// import CardViewer from './components/CardViewer/cardViewer';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
-import Flashcard from './components/CardViewer/cardViewer'
-import Flashcards from './components/CardViewer/cardViewer';
+// import Flashcard from './components/CardViewer/cardViewer'
+// import Flashcards from './components/CardViewer/cardViewer';
+import FlashcardTable from './components/Table/table';
 
 class App extends Component {
     state = {
@@ -29,14 +30,14 @@ class App extends Component {
         console.log(product)
     }
 
-    mapFlashcards(){
-        return this.state.flashcards.map(flashcards =>
-            <Flashcards
-                key={flashcards.id}
-                flashcards={flashcards}
-            />
-        );
-    }
+    // mapFlashcards(){
+    //     return this.state.flashcards.map(flashcards =>
+    //         <Flashcards
+    //             key={flashcards.id}
+    //             flashcards={flashcards}
+    //         />
+    //     );
+    // }
 
     // async getAllCollections(){
     //     let product = await axios.get('http://127.0.0.1:8000/collection/')
@@ -70,6 +71,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <TitleBar />
+                {/* <FlashcardTable mapFlashcards={() => this.mapFlashcards()} /> */}
                 {/* <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} /> */}
             </div>
         );
