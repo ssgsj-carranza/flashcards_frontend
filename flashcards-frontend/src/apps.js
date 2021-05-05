@@ -3,6 +3,8 @@ import TitleBar from './components/TitleBar/TitleBar'
 import CardViewer from './components/CardViewer/cardViewer';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
+import Flashcard from './components/CardViewer/cardViewer'
+import Flashcards from './components/CardViewer/cardViewer';
 
 class App extends Component {
     state = {
@@ -25,6 +27,15 @@ class App extends Component {
         })
         console.log(response)
         console.log(product)
+    }
+
+    mapFlashcards(){
+        return this.state.flashcards.map(flashcards =>
+            <Flashcards
+                key={flashcards.id}
+                flashcards={flashcards}
+            />
+        );
     }
 
     // async getAllCollections(){
