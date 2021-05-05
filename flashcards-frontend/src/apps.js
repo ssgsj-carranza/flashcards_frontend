@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
 import CardViewer from './components/CardViewer/cardViewer';
 import axios from 'axios';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
     state = {

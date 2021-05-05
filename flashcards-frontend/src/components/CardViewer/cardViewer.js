@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Segment, Button, Form} from 'semantic-ui-react';
 
 function CardViewer(props){
     return(
@@ -18,3 +19,4 @@ function CardViewer(props){
 }
 
 export default CardViewer
+
