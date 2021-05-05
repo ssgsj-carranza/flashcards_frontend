@@ -18,7 +18,22 @@ class App extends Component {
     
     async getAllCards(){
         let response = await axios.get('http://127.0.0.1:8000/flashcard/')
+        let product = await axios.get('http://127.0.0.1:8000/collection/')
+        this.setState({
+            flashcards:response.data,
+            collection:product.data
+        })
+        console.log(response)
+        console.log(product)
     }
+
+    // async getAllCollections(){
+    //     let product = await axios.get('http://127.0.0.1:8000/collection/')
+    //     this.setState({
+    //         collection:product.data
+    //     })
+    //     console.log("product")
+    // }
     
     goToNextCard(){
         let tempCardNumber = this.state.cardNumber;
