@@ -4,7 +4,10 @@ import React from 'react';
 const Table = (props) => {
     console.log(props)
     return(
-        <h1>{props.mapFlashcards()}</h1>
+        <div className="table">
+            
+            {props.mapFlashcards()}
+        </div>
     );
 }
 export default Table;

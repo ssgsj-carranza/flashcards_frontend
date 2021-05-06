@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Segment, Form, Button} from 'semantic-ui-react';
+import {Segment, Button} from 'semantic-ui-react';
 import axios from 'axios';
 
 class CardViewer extends Component{

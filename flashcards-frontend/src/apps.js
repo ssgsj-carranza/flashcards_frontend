@@ -3,17 +3,20 @@ import TitleBar from './components/TitleBar/TitleBar'
 import CardViewer from './components/CardViewer/cardViewer';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
-// import Flashcard from './components/CardViewer/cardViewer'
+import Flashcard from './components/Flashcard/flashcard'
 // import Flashcards from './components/CardViewer/cardViewer';
 import Table from './components/Table/table';
 import AddCard from './components/AddCardForm/addCard';
+import {Segment, Button} from 'semantic-ui-react';
 
 
 class App extends Component {
     state = {
             flashcards: [],
             collection: [],
-            cardNumber: 0
+            cardNumber: 0,
+            // front: true,
+            // page: 1
         };
 
     componentDidMount(){
@@ -24,12 +27,13 @@ class App extends Component {
     async getAllCards(){
         let response = await axios.get('http://127.0.0.1:8000/flashcard/')
         let product = await axios.get('http://127.0.0.1:8000/collection/')
+        console.log(response.data)
+        console.log(product.data)
         this.setState({
             flashcards:response.data,
             collection:product.data
         })
-        console.log(response)
-        console.log(product)
+       
     }
 
     addNewCard(card){
@@ -39,14 +43,19 @@ class App extends Component {
         })
     }
 
-    // mapFlashcards(){
-    //     return this.state.flashcards.map(flashcards =>
-    //         <Table
-    //             key={flashcards.id}
-    //             flashcards={flashcards}
-    //         />
-    //     );
-    // }
+    mapFlashcards(){
+        console.log(this.state.flashcards)
+        let something = this.state.flashcards.map(function(flashcards) {
+            console.log(flashcards);
+            return <Flashcard
+                key={flashcards.id}
+                flashcards={flashcards}
+            />
+        }
+        );
+        console.log(something)
+        return something
+    }
 
     // async getAllCollections(){
     //     let product = await axios.get('http://127.0.0.1:8000/collection/')
@@ -77,10 +86,41 @@ class App extends Component {
     //     });
     // }
     render() {
+        
         return (
             <div className="container-fluid">
                 <TitleBar />
+                {/* <div className="collection-view">
+                <div>
+                    <Button
+                        primary onClick={() => {this.setState(state => ({
+                            page: Math.max(state.page -1, 1), front: true
+                        }))}}>Previous</Button>
+                    <Button
+                        primary onClick={() => {this.setState(state => ({
+                            page: Math.min(state.page +1, this.state.collection.length), front: true
+                        }))}}>Next</Button>
+                    <Button
+                        secondary onClick={() => {this.setState(state => ({front: !state.front}
+                        ))}}>Flip</Button>
+                </div>
+                <Segment attached="bottom">
+                    {this.state.page} of {this.state.collection.length}
+                </Segment>
+                <Segment attached stacked inverted={!this.state.front}>
+                    <div className="collection-content">
+                        {this.state.collection.length === 0 && 'empty'}
+                        {this.state.collection.length > 0 && this.state.front &&(
+                            <h1>{this.state.collection[this.state.page - 1].front}</h1>
+                        )}
+                        {this.state.collection.length > 0 && !this.state.front && (
+                            <h1>{this.state.collection[this.state.page - 1].back}</h1>
+                        )}
+                    </div>
+                </Segment>
+            </div> */}
                 <AddCard addNewCard={this.addNewCard.bind(this)}/>
+                {this.mapFlashcards()}
                 {/* <Table mapFlashcards={() => this.mapFlashcards()} /> */}
                 <CardViewer/>
             </div>
