@@ -1,10 +1,10 @@
 import React from 'react';
 // import Flashcards from '../CardViewer/cardViewer';
 
-const FlashcardTable = (props) => {
+const Table = (props) => {
     console.log(props)
     return(
-        <table className="table">{props.mapFlashcards()}</table>
+        <h1>{props.mapFlashcards()}</h1>
     );
 }
-export default FlashcardTable;
+export default Table;

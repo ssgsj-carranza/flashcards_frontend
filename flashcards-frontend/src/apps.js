@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
-// import CardViewer from './components/CardViewer/cardViewer';
+import CardViewer from './components/CardViewer/cardViewer';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
 // import Flashcard from './components/CardViewer/cardViewer'
 // import Flashcards from './components/CardViewer/cardViewer';
-import FlashcardTable from './components/Table/table';
+import Table from './components/Table/table';
 import AddCard from './components/AddCardForm/addCard';
 
 
@@ -41,7 +41,7 @@ class App extends Component {
 
     // mapFlashcards(){
     //     return this.state.flashcards.map(flashcards =>
-    //         <Flashcards
+    //         <Table
     //             key={flashcards.id}
     //             flashcards={flashcards}
     //         />
@@ -56,33 +56,33 @@ class App extends Component {
     //     console.log("product")
     // }
     
-    goToNextCard(){
-        let tempCardNumber = this.state.cardNumber;
-        tempCardNumber ++;
-        if(tempCardNumber === this.flashcards.length){
-            tempCardNumber = 0;
-        }
-        this.setState({
-            cardNumber:tempCardNumber
-        });
-    }
+    // goToNextCard(){
+    //     let tempCardNumber = this.state.cardNumber;
+    //     tempCardNumber ++;
+    //     if(tempCardNumber === this.flashcards.length){
+    //         tempCardNumber = 0;
+    //     }
+    //     this.setState({
+    //         cardNumber:tempCardNumber
+    //     });
+    // }
 
-    goToPreviousCard(){
-        let tempCardNumber = this.state.cardNumber;
-        tempCardNumber --;
-        if(tempCardNumber < 0)
-            tempCardNumber = this.flashcards.length - 1;
-        this.setState({
-            cardNumber: tempCardNumber
-        });
-    }
+    // goToPreviousCard(){
+    //     let tempCardNumber = this.state.cardNumber;
+    //     tempCardNumber --;
+    //     if(tempCardNumber < 0)
+    //         tempCardNumber = this.flashcards.length - 1;
+    //     this.setState({
+    //         cardNumber: tempCardNumber
+    //     });
+    // }
     render() {
         return (
             <div className="container-fluid">
                 <TitleBar />
                 <AddCard addNewCard={this.addNewCard.bind(this)}/>
-                {/* <FlashcardTable mapFlashcards={() => this.mapFlashcards()} /> */}
-                {/* <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} /> */}
+                {/* <Table mapFlashcards={() => this.mapFlashcards()} /> */}
+                <CardViewer/>
             </div>
         );
     }
