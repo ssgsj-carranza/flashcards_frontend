@@ -7,8 +7,8 @@ class AddCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            front: '',
-            back: ''
+            word: '',
+            definition: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -22,13 +22,13 @@ class AddCard extends Component {
     onSubmit(event){
         event.preventDefault();
         const card = {
-            front: this.state.front,
-            back: this.state.back
+            word: this.state.word,
+            definition: this.state.definition
         }
         this.props.addNewCard(card);
         this.setState({
-            front:'',
-            back:''
+            word:'',
+            definition:''
         });
     }
 
@@ -40,13 +40,13 @@ class AddCard extends Component {
                 <FormInput
                         label="Word(Front)"
                         value={this.state.front}
-                        name="front"
+                        name="word"
                         onChange={this.handleChange}
                     />
                 <FormInput
                         label="Definition(Back)"
                         value={this.state.back}
-                        name="back"
+                        name="definition"
                         onChange={this.handleChange}/>
                 <Button type="submit">Add to stack</Button>
             </Segment>
