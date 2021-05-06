@@ -6,6 +6,8 @@ import 'semantic-ui-css/semantic.min.css';
 // import Flashcard from './components/CardViewer/cardViewer'
 // import Flashcards from './components/CardViewer/cardViewer';
 import FlashcardTable from './components/Table/table';
+import AddCard from './components/AddCardForm/addCard';
+
 
 class App extends Component {
     state = {
@@ -28,6 +30,13 @@ class App extends Component {
         })
         console.log(response)
         console.log(product)
+    }
+
+    addNewCard(card){
+        this.state.collection.push(card);
+        this.setState({
+            cardNumber: this.state.collection.length - 1
+        })
     }
 
     // mapFlashcards(){
@@ -71,6 +80,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <TitleBar />
+                <AddCard addNewCard={this.addNewCard.bind(this)}/>
                 {/* <FlashcardTable mapFlashcards={() => this.mapFlashcards()} /> */}
                 {/* <CardViewer flashcard={this.flashcards[this.state.cardNumber]} NextCard={() => this.goToNextCard ()} previousCard={() => this.goToPreviousCard()} /> */}
             </div>

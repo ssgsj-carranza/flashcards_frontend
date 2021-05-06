@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Segment, Button, Form, FormInput} from 'semantic-ui-react';
 import styled from 'styled-components';
+import axios from 'axios'
 
 class AddCard extends Component {
     constructor(props) {
         super(props);
-        state = {
+        this.state = {
             front: '',
             back: ''
         };
@@ -37,13 +38,13 @@ class AddCard extends Component {
                 <h3>Add new Flashcard</h3>
                 <form onSubmit={this.onSubmit}></form>
                 <FormInput
-                        label="Front"
+                        label="Word(Front)"
                         value={this.state.front}
                         name="front"
                         onChange={this.handleChange}
                     />
                 <FormInput
-                        label="Back"
+                        label="Definition(Back)"
                         value={this.state.back}
                         name="back"
                         onChange={this.handleChange}/>
@@ -53,32 +54,65 @@ class AddCard extends Component {
     }
 }
 
-export default class CollectionView extends Component {
-    constructor(props) {
-        super(props);
-        state = {
-            collection:[],
-            page: 1,
-            front: true
-        }
-    }
+export default AddCard;
 
-    render(){
-        return(
-            <div className="collection-view">
-                <div>
-                    <Button
-                        primary onClick={() => {this.setState(state => ({
-                            page: Math.max(state.page -1, 1), front: true
-                        }))}}>Previous</Button>
-                    <Button
-                        primary onClick={() => {this.setState(state => ({
-                            page: Math.minb(state.page +1, this.state.collection.length), front: true
-                        }))}}>Next</Button>
-                    <Button
-                        secondary onClick={() => {this.setState(state => ({front: !state.front}))}}>Flip</Button>
-                </div>
-            </div>
-        )
-    }
-}
+// export default class CollectionView extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             collection:[],
+//             page: 1,
+//             front: true
+//         };
+//         this.addCard = this.addCard.bind(this)
+//     }
+//     componentDidMount(){
+//         this.getAllCards();
+//         console.log(this.state.flashcards)
+//     }
+    
+//     async getAllCards(){
+//         let response = await axios.get('http://127.0.0.1:8000/flashcard/')
+//         let product = await axios.get('http://127.0.0.1:8000/collection/')
+//         this.setState({
+//             flashcards:response.data,
+//             collection:product.data
+//         })
+//         console.log(response)
+//         console.log(product)
+//     }
+
+//     render(){
+//         return(
+//             <div className="collection-view">
+//                 <div>
+//                     <Button
+//                         primary onClick={() => {this.setState(state => ({
+//                             page: Math.max(state.page -1, 1), front: true
+//                         }))}}>Previous</Button>
+//                     <Button
+//                         primary onClick={() => {this.setState(state => ({
+//                             page: Math.min(state.page +1, this.state.collection.length), front: true
+//                         }))}}>Next</Button>
+//                     <Button
+//                         secondary onClick={() => {this.setState(state => ({front: !state.front}
+//                         ))}}>Flip</Button>
+//                 </div>
+//                 <Segment attached="bottom">
+//                     {this.state.page} of {this.state.collection.length}
+//                 </Segment>
+//                 <Segment attached stacked inverted={!this.state.front}>
+//                     <div className="collection-content">
+//                         {this.state.collection.length === 0 && 'empty'}
+//                         {this.state.collection.length > 0 && this.state.front &&(
+//                             <h1>{this.state.collection[this.state.page - 1].front}</h1>
+//                         )}
+//                         {this.state.collection.length > 0 && !this.state.front && (
+//                             <h1>{this.state.collection[this.state.page - 1].back}</h1>
+//                         )}
+//                     </div>
+//                 </Segment>
+//             </div>
+//         )
+//     }
+// }
