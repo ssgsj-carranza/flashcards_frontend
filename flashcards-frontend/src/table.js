@@ -1,12 +1,13 @@
 import React from 'react';
 // import Flashcards from '../CardViewer/cardViewer';
+import CardFilter from './CardFilter'
 
 const Table = (props) => {
-    console.log(props)
+    <CardFilter flashcards={props.flashcards}/>
     return(
         <div className="table">
             
-            {props.mapFlashcards()}
+            {props.mapCollection()}
         </div>
     );
 }

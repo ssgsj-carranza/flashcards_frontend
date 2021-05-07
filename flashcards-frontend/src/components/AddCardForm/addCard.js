@@ -7,8 +7,10 @@ class AddCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            title:'',
             word: '',
-            definition: ''
+            definition: '',
+            collection:''
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -23,12 +25,16 @@ class AddCard extends Component {
         event.preventDefault();
         const card = {
             word: this.state.word,
-            definition: this.state.definition
+            definition: this.state.definition,
+            title:this.state.title,
+            collection: this.state.collection
         }
         this.props.addNewCard(card);
         this.setState({
             word:'',
-            definition:''
+            definition:'',
+            title: '',
+            collection:''
         });
     }
 
@@ -38,15 +44,27 @@ class AddCard extends Component {
                 <h3>Add new Flashcard</h3>
                 <form onSubmit={this.onSubmit}></form>
                 <FormInput
-                        label="Word(Front)"
-                        value={this.state.front}
-                        name="word"
+                        label="Title"
+                        value={this.state.word}
+                        name="title"
                         onChange={this.handleChange}
                     />
                 <FormInput
+                        label="Word(Front)"
+                        value={this.state.title}
+                        name="title"
+                        onChange={this.handleChange}
+                />
+                <FormInput
                         label="Definition(Back)"
-                        value={this.state.back}
+                        value={this.state.collection}
                         name="definition"
+                        onChange={this.handleChange}
+                />
+                <FormInput
+                        label="Collection"
+                        value={this.state.definition}
+                        name="collection"
                         onChange={this.handleChange}/>
                 <Button type="submit">Add to stack</Button>
             </Segment>

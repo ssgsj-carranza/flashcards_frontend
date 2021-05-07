@@ -5,9 +5,10 @@ import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
 import Flashcard from './components/Flashcard/flashcard'
 // import Flashcards from './components/CardViewer/cardViewer';
-import Table from './components/Table/table';
+import Table from './table'
 import AddCard from './components/AddCardForm/addCard';
 import {Segment, Button} from 'semantic-ui-react';
+import Collection from './components/Collection/Collection'
 
 
 class App extends Component {
@@ -55,6 +56,16 @@ class App extends Component {
         );
         console.log(something)
         return something
+    }
+
+    mapCollection(){
+        return this.state.collection.map(collection => 
+            <Collection
+                key={collection.id}
+                collection={collection}
+                filterById={(collectionId) => this.filterById(collectionId)}
+            />
+        )
     }
 
     // async getAllCollections(){
@@ -123,6 +134,10 @@ class App extends Component {
                 {this.mapFlashcards()}
                 {/* <Table mapFlashcards={() => this.mapFlashcards()} /> */}
                 <CardViewer/>
+                <Table
+                    mapCollection={() => this.mapCollection()}
+                    flashcards={this.state.flashcards}
+                    filterById = {(collectionId) => this.filterById(collectionId)}/>
             </div>
         );
     }
