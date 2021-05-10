@@ -1,17 +1,17 @@
 import React from 'react';
 import CardViewer from './components/CardViewer/FlashCardViewer'
-import {Button, Card, Label} from 'semantic-ui-react';
+import {Button, Card, Label, Segment, SegmentGroup} from 'semantic-ui-react';
 
 const CardFilter= (props) => {
     return(
         props.filteredCard.map((flashcards) => {
             return(
-                <div>
+                <SegmentGroup>
                     {flashcards.flashcard_word}
                 <div>
                     {flashcards.flashcard_definition}
                 </div>
-                </div>
+                </SegmentGroup>
             )
         })
     )

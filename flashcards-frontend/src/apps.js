@@ -40,19 +40,21 @@ class App extends Component {
         })
     }
 
-    addNewCard(card){
-        this.state.flashcards.push(card);
-        this.setState({
-            cardNumber: this.state.collection.length - 1
-        })
-    }
-
-    // async addNewCard (card){
-    //     await axios.post('http://127.0.0.1:8000/flashcard/', card)
+    // addNewCard(card){
+    //     this.state.flashcards.push(card);
     //     this.setState({
-    //         cardNumber: this.state.flashcards.length-1
+    //         cardNumber: this.state.collection.length - 1
     //     })
     // }
+
+    async addNewCard (card){
+        console.log("CARD", card);
+        let response = await axios.post('http://127.0.0.1:8000/flashcard/', card)
+        this.setState({
+            cardNumber: this.state.flashcards.length-1,
+            flashcards: [...this.state.flashcards, response.data]
+        })
+    }
 
     mapFlashcards(){
         console.log(this.state.flashcards)
@@ -100,12 +102,12 @@ class App extends Component {
     }
 
     render() {
-        
+        console.log("flashcards", this.state.flashcards);
         return (
             <div className="container-fluid">
                 <TitleBar />
                 <AddCard addNewCard={this.addNewCard.bind(this)}/>
-                {/* <FlashCardViewer /> */}
+                <FlashCardViewer flashcards={this.state.flashcards}/>
                 <Table
                     mapCollection={() => this.mapCollection()}
                     flashcards={this.state.flashcards}

@@ -36,6 +36,12 @@ class FlashCardViewer extends Component{
         })
     }
 
+    checkFlashcards(){
+        if(this.props.flashcards.length !== 0){
+            return this.props.flashcards[0].flashcard_word;
+        }
+    }
+
     // goToNextCard(){
     //     let tempCardNumber = this.state.flashcardNumber;
     //     tempCardNumber++;
@@ -78,6 +84,7 @@ class FlashCardViewer extends Component{
                 </Segment>
                 <Segment attached stacked inverted={!this.state.front}>
                     <div className="collection-content">
+                        {this.checkFlashcards()}
                         {this.state.collection.length === 0 && 'empty'}
                         {this.state.collection.length > 0 && this.state.front &&(
                             <h1>{this.state.collection[this.state.page - 1].front}</h1>
