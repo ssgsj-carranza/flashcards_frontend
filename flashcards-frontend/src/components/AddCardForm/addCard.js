@@ -7,10 +7,10 @@ class AddCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title:'',
-            word: '',
-            definition: '',
-            collection:''
+            flashcard_title:'',
+            flashcard_word: '',
+            flashcard_definition: '',
+            collection_id:''
         };
         this.handleChange = this.handleChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -23,10 +23,10 @@ class AddCard extends Component {
     }
     onSubmit(event){
         event.preventDefault();
-        this.props.addCard(this.state.word, this.state.definition);
+        this.props.addNewCard(this.state.word, this.state.definition);
         this.setState({
-            word:'',
-            definition:''
+            flashcard_word:'',
+            flashcard_definition:''
         });
     }
 
@@ -37,13 +37,13 @@ class AddCard extends Component {
                 <Form onSubmit={this.onSubmit}></Form>
                 <FormInput
                         label="Word(Front)"
-                        value={this.state.title}
-                        name="title"
+                        value={this.state.word}
+                        name="word"
                         onChange={this.handleChange}
                 />
                 <FormInput
                         label="Definition(Back)"
-                        value={this.state.collection}
+                        value={this.state.definition}
                         name="definition"
                         onChange={this.handleChange}
                 />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TitleBar from './components/TitleBar/TitleBar'
-import CardViewer from './components/CardViewer/cardViewer';
+import FlashCardViewer from './components/CardViewer/FlashCardViewer';
 import axios from 'axios';
 import 'semantic-ui-css/semantic.min.css';
 import Flashcard from './components/Flashcard/flashcard'
@@ -41,11 +41,18 @@ class App extends Component {
     }
 
     addNewCard(card){
-        this.state.collection.push(card);
+        this.state.flashcards.push(card);
         this.setState({
             cardNumber: this.state.collection.length - 1
         })
     }
+
+    // async addNewCard (card){
+    //     await axios.post('http://127.0.0.1:8000/flashcard/', card)
+    //     this.setState({
+    //         cardNumber: this.state.flashcards.length-1
+    //     })
+    // }
 
     mapFlashcards(){
         console.log(this.state.flashcards)
@@ -98,7 +105,7 @@ class App extends Component {
             <div className="container-fluid">
                 <TitleBar />
                 <AddCard addNewCard={this.addNewCard.bind(this)}/>
-                <CardViewer />
+                {/* <FlashCardViewer /> */}
                 <Table
                     mapCollection={() => this.mapCollection()}
                     flashcards={this.state.flashcards}

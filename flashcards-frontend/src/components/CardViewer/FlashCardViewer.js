@@ -4,7 +4,7 @@ import axios from 'axios';
 // import AddCard from '../AddCardForm/addCard';
 
 
-class CardViewer extends Component{
+class FlashCardViewer extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -93,5 +93,5 @@ class CardViewer extends Component{
     }
 }
 
-export default CardViewer
+export default FlashCardViewer
 

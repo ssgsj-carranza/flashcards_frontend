@@ -1,5 +1,5 @@
 import React from 'react';
-import CardViewer from './components/CardViewer/cardViewer'
+import CardViewer from './components/CardViewer/FlashCardViewer'
 import {Button, Card, Label} from 'semantic-ui-react';
 
 const CardFilter= (props) => {
