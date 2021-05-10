@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Segment, Button, FormInput} from 'semantic-ui-react';
+import {Segment, Button, FormInput, Form} from 'semantic-ui-react';
 import styled from 'styled-components';
 
 
@@ -23,18 +23,10 @@ class AddCard extends Component {
     }
     onSubmit(event){
         event.preventDefault();
-        const card = {
-            word: this.state.word,
-            definition: this.state.definition,
-            title:this.state.title,
-            collection: this.state.collection
-        }
-        this.props.addNewCard(card);
+        this.props.addCard(this.state.word, this.state.definition);
         this.setState({
             word:'',
-            definition:'',
-            title: '',
-            collection:''
+            definition:''
         });
     }
 
@@ -42,13 +34,7 @@ class AddCard extends Component {
         return (
             <Segment>
                 <h3>Add new Flashcard</h3>
-                <form onSubmit={this.onSubmit}></form>
-                <FormInput
-                        label="Title"
-                        value={this.state.word}
-                        name="title"
-                        onChange={this.handleChange}
-                    />
+                <Form onSubmit={this.onSubmit}></Form>
                 <FormInput
                         label="Word(Front)"
                         value={this.state.title}
@@ -61,12 +47,7 @@ class AddCard extends Component {
                         name="definition"
                         onChange={this.handleChange}
                 />
-                <FormInput
-                        label="Collection"
-                        value={this.state.definition}
-                        name="collection"
-                        onChange={this.handleChange}/>
-                <Button type="submit">Add to stack</Button>
+                <Button color="green" type="submit">Add to stack</Button>
             </Segment>
         );
     }

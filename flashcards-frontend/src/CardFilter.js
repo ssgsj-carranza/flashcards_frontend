@@ -1,11 +1,20 @@
 import React from 'react';
+import CardViewer from './components/CardViewer/cardViewer'
+import {Button, Card, Label} from 'semantic-ui-react';
 
-function CardFilter(props){
-    let collection =[{id: props.collection}];
-    let flashcards = [{id: props.flashcards.id,
-                       word: props.flashcards.flashcard_word,
-                       definition: props.flashcards.flashcard_definition,
-                       collection: props.flashcards.collection}];
+const CardFilter= (props) => {
+    return(
+        props.filteredCard.map((flashcards) => {
+            return(
+                <div>
+                    {flashcards.flashcard_word}
+                <div>
+                    {flashcards.flashcard_definition}
+                </div>
+                </div>
+            )
+        })
+    )
 }
 
 export default CardFilter

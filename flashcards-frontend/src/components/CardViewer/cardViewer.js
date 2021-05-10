@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Segment, Button} from 'semantic-ui-react';
 import axios from 'axios';
+// import AddCard from '../AddCardForm/addCard';
+
 
 class CardViewer extends Component{
     constructor(props){
@@ -8,25 +10,53 @@ class CardViewer extends Component{
         this.state={
             collection:[],
             front: true,
-            page:1
+            page:1,
+            
         };
     }
 
     componentDidMount(){
         this.getAllCards();
-        console.log(this.state.flashcards)
+        console.log(this.state.collection)
     }
     
     async getAllCards(){
         let response = await axios.get('http://127.0.0.1:8000/flashcard/')
-        let product = await axios.get('http://127.0.0.1:8000/collection/')
         this.setState({
-            flashcards:response.data,
-            collection:product.data
+            collection:response.data
         })
         console.log(response)
-        console.log(product)
     }
+    
+
+    addNewCard(card){
+        this.state.collection.push(card);
+        this.setState({
+            cardNumber: this.state.collection.length - 1
+        })
+    }
+
+    // goToNextCard(){
+    //     let tempCardNumber = this.state.flashcardNumber;
+    //     tempCardNumber++;
+    //     if(tempCardNumber === this.collection.length){
+    //         tempCardNumber = 0;
+    //     }
+    //     this.setState({
+    //         cardNumber: tempCardNumber
+    //     });
+    // }
+
+    // goToPreviousCard(){
+    //     let tempCardNumber = this.state.cardNumber;
+    //     tempCardNumber--;
+    //     if(tempCardNumber < 0)
+    //         tempCardNumber = this.collection.length - 1;
+    //     this.setState({
+    //         cardNumber: tempCardNumber
+    //     });
+    // }
+    
     render(){
         return(
             <div className="collection-view">
@@ -57,6 +87,7 @@ class CardViewer extends Component{
                         )}
                     </div>
                 </Segment>
+                
             </div>
         )
     }

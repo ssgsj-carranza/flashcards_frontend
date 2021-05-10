@@ -1,13 +1,16 @@
 import React from 'react';
-import {Segment, Button} from 'semantic-ui-react';
-
+import {Segment, Button, Label} from 'semantic-ui-react';
+let flashcards="hello"
 function SelectCollection(props){
     return (
-        <div className="row row-spacer">
-            <div className="col-md-4">
-                <Button primary onClick={() => props.filterById(props.collection)}>Select Collection</Button>
+        <Segment>
+            <div className="row row-spacer">
+                <div className="col-md-4">
+                    <Label>{flashcards.flashcard_word}</Label>
+                    <Button primary onClick={() => props.filterById(props.collection)}>Select Collection</Button>
+                </div>
             </div>
-        </div>
+        </Segment>
     )
 }
 
