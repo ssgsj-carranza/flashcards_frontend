@@ -56,6 +56,8 @@ class App extends Component {
         })
     }
 
+    
+
     mapFlashcards(){
         console.log(this.state.flashcards)
         let something = this.state.flashcards.map(function(flashcards) {

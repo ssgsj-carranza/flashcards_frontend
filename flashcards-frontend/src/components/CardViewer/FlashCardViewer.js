@@ -39,6 +39,7 @@ class FlashCardViewer extends Component{
     checkFlashcards(){
         if(this.props.flashcards.length !== 0){
             return this.props.flashcards[0].flashcard_word;
+            
         }
     }
 
