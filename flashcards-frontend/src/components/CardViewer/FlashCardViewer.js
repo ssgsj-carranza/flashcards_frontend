@@ -43,26 +43,26 @@ class FlashCardViewer extends Component{
         }
     }
 
-    // goToNextCard(){
-    //     let tempCardNumber = this.state.flashcardNumber;
-    //     tempCardNumber++;
-    //     if(tempCardNumber === this.collection.length){
-    //         tempCardNumber = 0;
-    //     }
-    //     this.setState({
-    //         cardNumber: tempCardNumber
-    //     });
-    // }
+    goToNextCard(){
+        let tempCardNumber = this.state.flashcardNumber;
+        tempCardNumber++;
+        if(tempCardNumber === this.collection.length){
+            tempCardNumber = 0;
+        }
+        this.setState({
+            cardNumber: tempCardNumber
+        });
+    }
 
-    // goToPreviousCard(){
-    //     let tempCardNumber = this.state.cardNumber;
-    //     tempCardNumber--;
-    //     if(tempCardNumber < 0)
-    //         tempCardNumber = this.collection.length - 1;
-    //     this.setState({
-    //         cardNumber: tempCardNumber
-    //     });
-    // }
+    goToPreviousCard(){
+        let tempCardNumber = this.state.cardNumber;
+        tempCardNumber--;
+        if(tempCardNumber < 0)
+            tempCardNumber = this.collection.length - 1;
+        this.setState({
+            cardNumber: tempCardNumber
+        });
+    }
     
     render(){
         return(
